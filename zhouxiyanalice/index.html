@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周希妍alice零遮罩原图-图像真伪核验与出处追踪手册</title>
+<meta name="description" content="周希妍alice零遮罩原图相关图像如何核验真伪、追查出处、判断是否为拼接与重压缩版本？从元数据、分辨率、发布账号与时间线四个层面拆解，附FAQ与读者实测反馈。">
+<meta name="keywords" content="周希妍alice零遮罩原图">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324403a'/%3E%3Ccircle cx='26' cy='27' r='11' fill='none' stroke='%23e8d9b8' stroke-width='3'/%3E%3Cpath d='M34 35l12 12' stroke='%23e8d9b8' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='27' r='4' fill='%23d98b5f'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1d2a26;
+  --ink-soft:#41544d;
+  --muted:#6b7c75;
+  --paper:#f7f4ec;
+  --paper-2:#efeade;
+  --card:#fffdf7;
+  --line:#d9d2c1;
+  --brand:#24403a;
+  --brand-2:#356057;
+  --accent:#c9743d;
+  --accent-soft:#f0e0d2;
+  --ok:#3d7a52;
+  --warn:#a8602a;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 10px rgba(36,64,58,.08);
+  --shadow-lg:0 10px 28px rgba(36,64,58,.14);
+  --fs-xs:12px;
+  --fs-sm:13.5px;
+  --fs-base:15.5px;
+  --fs-md:17px;
+  --fs-lg:21px;
+  --fs-xl:26px;
+  --fs-2xl:34px;
+  --sp:16px;
+  --sp-lg:26px;
+  --sp-xl:40px;
+  --sticky-h:52px;
+  --header-h:64px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sticky-h) + var(--header-h) + 12px)}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:var(--fs-base);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+ul,ol{margin:0;padding-left:1.2em}
+p{margin:0 0 .9em}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ---------- 吸顶公告 ---------- */
+.announce{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(90deg,#24403a,#356057);
+  color:#f2ead9;font-size:var(--fs-sm);
+  min-height:var(--sticky-h);
+  display:flex;align-items:center;
+}
+.announce .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0}
+.announce .badge{
+  background:var(--accent);color:#fff;border-radius:999px;
+  padding:2px 10px;font-size:11.5px;font-weight:700;letter-spacing:.5px;
+}
+.announce b{color:#fff}
+.announce a{color:#f6d9b8;text-decoration:underline}
+
+/* ---------- 页头 ---------- */
+.header{
+  position:sticky;top:var(--sticky-h);z-index:50;
+  background:rgba(247,244,236,.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  min-height:var(--header-h);
+}
+.header .wrap{
+  display:flex;align-items:center;gap:14px;
+  min-height:var(--header-h);padding:6px 0;
+}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand-mark{width:38px;height:38px;flex:none}
+.brand-text{font-weight:800;font-size:var(--fs-md);color:var(--brand);letter-spacing:.2px;line-height:1.15}
+.brand-text small{display:block;font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:1.4px}
+.nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
+.nav a{
+  color:var(--ink-soft);font-size:var(--fs-sm);padding:6px 10px;border-radius:6px;white-space:nowrap;
+}
+.nav a:hover{background:var(--paper-2);text-decoration:none;color:var(--brand)}
+.nav a.active{background:var(--brand);color:#fff}
+.head-tools{display:flex;align-items:center;gap:8px;flex:none}
+.search{position:relative}
+.search input{
+  width:190px;max-width:38vw;padding:7px 30px 7px 11px;
+  border:1px solid var(--line);border-radius:999px;background:var(--card);
+  font-size:var(--fs-sm);color:var(--ink);font-family:inherit;
+}
+.search input:focus{border-color:var(--brand-2);outline:none;box-shadow:0 0 0 3px rgba(53,96,87,.15)}
+.search .sicon{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-feedback{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);
+  font-size:var(--fs-sm);padding:10px 12px;display:none;z-index:70;color:var(--ink-soft);
+}
+.search-feedback.show{display:block}
+.search-feedback strong{color:var(--accent)}
+.menu-btn{
+  display:none;background:var(--brand);color:#fff;border:none;border-radius:8px;
+  padding:8px 12px;font-size:var(--fs-sm);font-family:inherit;cursor:pointer;
+}
+.menu-btn:focus-visible{outline:3px solid var(--accent)}
+
+/* ---------- 容器 ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{scroll-margin-top:calc(var(--sticky-h) + var(--header-h) + 16px)}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 340px at 88% -10%, rgba(201,116,61,.18), transparent 62%),
+    radial-gradient(700px 300px at 0% 110%, rgba(53,96,87,.20), transparent 60%),
+    var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{
+  display:grid;grid-template-columns:1.25fr .85fr;gap:34px;align-items:center;
+  padding-top:44px;padding-bottom:44px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:var(--fs-xs);letter-spacing:2px;color:var(--accent);
+  border:1px solid var(--accent);border-radius:999px;padding:3px 12px;margin-bottom:14px;font-weight:700;
+}
+.hero h1{font-size:var(--fs-2xl);color:var(--brand);letter-spacing:.5px}
+.hero .sub{
+  margin-top:12px;font-size:var(--fs-md);color:var(--ink-soft);max-width:52ch;
+}
+.hero .sub b{color:var(--brand);border-bottom:2px solid var(--accent-soft)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:999px;font-size:var(--fs-sm);font-weight:700;
+  border:1px solid transparent;cursor:pointer;font-family:inherit;
+}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-2);text-decoration:none;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--brand);border-color:var(--brand-2)}
+.btn-ghost:hover{background:var(--paper-2);text-decoration:none;transform:translateY(-2px)}
+.hero-stats{display:flex;gap:26px;margin-top:28px;flex-wrap:wrap}
+.hero-stats div{font-size:var(--fs-xs);color:var(--muted);letter-spacing:.6px}
+.hero-stats b{display:block;font-size:var(--fs-xl);color:var(--brand);font-weight:800;line-height:1.1}
+.hero-art{position:relative;height:320px}
+.hero-art svg{width:100%;height:100%}
+
+/* ---------- 通用板块头 ---------- */
+.sec{padding:var(--sp-xl) 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{font-size:var(--fs-lg);color:var(--brand);display:flex;align-items:center;gap:10px}
+.sec-head h2::before{content:"";width:6px;height:22px;background:var(--accent);border-radius:3px;display:inline-block}
+.sec-head p{margin:0;font-size:var(--fs-sm);color:var(--muted);max-width:56ch}
+.kicker{font-size:var(--fs-xs);letter-spacing:2px;color:var(--accent);font-weight:700;text-transform:uppercase}
+
+/* ---------- 领域概览 ---------- */
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ov-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 16px 14px;box-shadow:var(--shadow);
+}
+.ov-card h3{font-size:var(--fs-base);color:var(--brand);margin-bottom:6px}
+.ov-card p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
+.ov-card .num{font-size:var(--fs-xl);font-weight:800;color:var(--accent);display:block;line-height:1.2;margin-bottom:2px}
+
+/* ---------- 精选内容 ---------- */
+.featured{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px}
+.feat-main{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+}
+.feat-main img{width:100%;height:190px;object-fit:cover}
+.feat-body{padding:16px 18px 18px}
+.feat-body .kicker{margin-bottom:6px}
+.feat-body h3{font-size:var(--fs-md);color:var(--brand);margin-bottom:8px}
+.feat-body p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
+.feat-side{display:flex;flex-direction:column;gap:16px}
+.feat-mini{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;box-shadow:var(--shadow);flex:1;
+}
+.feat-mini h3{font-size:var(--fs-sm);color:var(--brand);margin-bottom:6px}
+.feat-mini p{font-size:var(--fs-xs);color:var(--muted);margin:0}
+.feat-mini time{font-size:11px;color:var(--accent);letter-spacing:.4px}
+
+/* ---------- 最新更新（时间线） ---------- */
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 18px 8px}
+.tl-item::before{
+  content:"";position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:var(--card);border:3px solid var(--brand-2);
+}
+.tl-item time{font-size:var(--fs-xs);color:var(--accent);font-weight:700;letter-spacing:.6px}
+.tl-item h3{font-size:var(--fs-base);color:var(--brand);margin:2px 0 4px}
+.tl-item p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
+
+/* ---------- 分类入口（标签索引） ---------- */
+.tag-index{display:flex;flex-wrap:wrap;gap:10px}
+.tag-index a{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:7px 16px;font-size:var(--fs-sm);color:var(--ink-soft);box-shadow:var(--shadow);
+}
+.tag-index a b{color:var(--brand);font-weight:700}
+.tag-index a:hover{border-color:var(--brand-2);color:var(--brand);text-decoration:none;transform:translateY(-2px)}
+.tag-index a .cnt{font-size:11px;color:var(--muted)}
+
+/* ---------- 深度解析（分栏正文） ---------- */
+.deep{display:grid;grid-template-columns:1fr 300px;gap:30px}
+.deep-main{min-width:0}
+.deep-main h3{font-size:var(--fs-md);color:var(--brand);margin:26px 0 8px}
+.deep-main h3:first-child{margin-top:0}
+.deep-main p{color:var(--ink-soft)}
+.deep-main .lead{font-size:var(--fs-md);color:var(--ink)}
+.claim{
+  border-left:4px solid var(--accent);background:var(--accent-soft);
+  padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:18px 0;
+}
+.claim b{color:var(--brand)}
+.deep-aside{position:relative}
+.aside-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow);margin-bottom:16px;
+}
+.aside-card h4{font-size:var(--fs-sm);color:var(--brand);margin-bottom:10px;letter-spacing:.5px}
+.aside-card ul{padding-left:1.1em}
+.aside-card li{font-size:var(--fs-sm);color:var(--ink-soft);margin-bottom:7px}
+.fact-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm)}
+.fact-table th,.fact-table td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.fact-table th{background:var(--paper-2);color:var(--brand);font-weight:700;width:40%}
+.fact-table td{color:var(--ink-soft)}
+
+/* ---------- 体验指南（编号步骤） ---------- */
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.step{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 18px 16px;position:relative;box-shadow:var(--shadow);
+}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-size:var(--fs-lg);font-weight:800;color:var(--accent);opacity:.85;
+  display:block;line-height:1;margin-bottom:8px;
+}
+.step h3{font-size:var(--fs-base);color:var(--brand);margin-bottom:6px}
+.step p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
+
+/* ---------- FAQ ---------- */
+.faq details{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:13px 16px;margin-bottom:10px;box-shadow:var(--shadow);
+}
+.faq summary{
+  cursor:pointer;font-size:var(--fs-base);color:var(--brand);font-weight:700;
+  list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;color:var(--accent);font-weight:400;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{font-size:var(--fs-sm);color:var(--ink-soft);margin:10px 0 2px}
+
+/* ---------- 用户评论（引语卡） ---------- */
+.comments{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.comment{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+}
+.comment.is-bad{border-left:4px solid var(--warn)}
+.comment.is-neu{border-left:4px solid var(--line)}
+.comment.is-ok{border-left:4px solid var(--ok)}
+.comment p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0 0 10px;flex:1}
+.comment .who{font-size:var(--fs-xs);color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.comment .who b{color:var(--brand)}
+.comment .who time{color:var(--accent)}
+
+/* ---------- 相关资讯（紧凑列表） ---------- */
+.news-list{list-style:none;padding:0}
+.news-list li{
+  display:flex;gap:14px;padding:13px 2px;border-bottom:1px dashed var(--line);align-items:baseline;
+}
+.news-list li:last-child{border-bottom:none}
+.news-list time{font-size:var(--fs-xs);color:var(--accent);flex:none;width:74px;font-weight:700}
+.news-list a{font-size:var(--fs-sm);color:var(--ink);flex:1}
+.news-list span{font-size:var(--fs-xs);color:var(--muted);flex:none}
+
+/* ---------- 相关推荐（对照面板 / 标签） ---------- */
+.reco-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reco-panel{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);
+}
+.reco-panel h3{font-size:var(--fs-base);color:var(--brand);margin-bottom:10px}
+.reco-tags{display:flex;flex-wrap:wrap;gap:8px}
+.reco-tags a{
+  font-size:var(--fs-xs);background:var(--paper-2);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px;color:var(--ink-soft);
+}
+.reco-tags a:hover{background:var(--brand);color:#fff;text-decoration:none;border-color:var(--brand)}
+
+/* ---------- 排行榜 / 可信度分层 ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tier{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);
+}
+.tier .level{font-size:var(--fs-xs);font-weight:800;letter-spacing:1px;color:var(--accent)}
+.tier h3{font-size:var(--fs-base);color:var(--brand);margin:4px 0 8px}
+.tier ol{padding-left:1.15em;margin:0}
+.tier li{font-size:var(--fs-sm);color:var(--ink-soft);margin-bottom:6px}
+
+/* ---------- 补充：清单 ---------- */
+.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;list-style:none;padding:0}
+.checklist li{font-size:var(--fs-sm);color:var(--ink-soft);padding-left:26px;position:relative}
+.checklist li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:800}
+
+/* ---------- 图像 ---------- */
+.thumb{width:100%;height:150px;object-fit:cover;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+
+/* ---------- 页脚 ---------- */
+.footer{background:var(--brand);color:#d8e0dc;padding:44px 0 26px;font-size:var(--fs-sm)}
+.footer a{color:#cfe0da}
+.footer a:hover{color:#fff}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+.footer h4{font-size:var(--fs-sm);color:#fff;margin-bottom:10px;letter-spacing:.5px}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer li{margin-bottom:7px;font-size:var(--fs-xs)}
+.footer .f-brand{font-size:var(--fs-md);font-weight:800;color:#fff;margin-bottom:8px}
+.footer .f-desc{font-size:var(--fs-xs);color:#b8c8c2;line-height:1.8;max-width:34ch}
+.footer .f-note{
+  margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:var(--fs-xs);color:#a9bdb6;
+}
+
+/* ---------- 回到顶部 ---------- */
+.to-top{
+  position:fixed;right:18px;bottom:22px;z-index:80;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--brand);color:#fff;font-size:18px;box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;
+  font-family:inherit;
+}
+.to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.to-top:hover{background:var(--accent)}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:1024px){
+  .hero .wrap{grid-template-columns:1fr;gap:18px}
+  .hero-art{height:220px;order:-1}
+  .overview-grid{grid-template-columns:repeat(2,1fr)}
+  .featured{grid-template-columns:1fr 1fr}
+  .feat-main{grid-column:1 / -1}
+  .deep{grid-template-columns:1fr}
+  .deep-aside{order:2}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .tiers{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    background:var(--card);border-bottom:1px solid var(--line);
+    padding:10px 16px 14px;box-shadow:var(--shadow-lg);flex-direction:column;gap:2px;
+  }
+  .nav.open{display:flex}
+  .nav a{padding:9px 10px;border-radius:8px;font-size:var(--fs-base)}
+  .menu-btn{display:inline-block}
+  .header .wrap{position:relative;flex-wrap:wrap}
+  .head-tools{margin-left:auto}
+  .search input{width:150px}
+  .hero h1{font-size:26px}
+  .overview-grid,.featured,.steps,.comments,.reco-grid,.checklist{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .sec{padding:32px 0}
+  .hero-stats{gap:18px}
+  .to-top{right:12px;bottom:14px}
+}
+@media (max-width:380px){
+  .search input{width:110px}
+  .brand-text{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .btn:hover,.tag-index a:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 公告条 -->
+<div class="announce" id="announce">
+  <div class="wrap">
+    <span class="badge">更新</span>
+    <span><b>周希妍alice零遮罩原图</b>核验索引：11 月 6 日新增 3 组元数据比对样本，EXIF 时区字段与发布记录相差 7 小时，已标为待复核。</span>
+    <a href="/#update-timeline">查看时间线 →</a>
+  </div>
+</div>
+
+<!-- 页头 -->
+<header class="header" id="top">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="返回首页">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#24403a"/>
+        <circle cx="25" cy="26" r="11.5" fill="none" stroke="#e8d9b8" stroke-width="3"/>
+        <path d="M33.5 34.5l13 13" stroke="#e8d9b8" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="25" cy="26" r="4.2" fill="#c9743d"/>
+      </svg>
+      <span class="brand-text">周希妍alice零遮罩原图<small>图像出处核验</small></span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主题导航">
+      <a href="/#overview">领域概览</a>
+      <a href="/#featured">精选推荐</a>
+      <a href="/#update-timeline">最新更新</a>
+      <a href="/#channels">分类入口</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">读者评论</a>
+      <a href="/#reco">相关推荐</a>
+    </nav>
+    <div class="head-tools">
+      <div class="search">
+        <input type="search" id="siteSearch" placeholder="搜索条目名或账号" aria-label="站内搜索" autocomplete="off">
+        <span class="sicon" aria-hidden="true">🔍</span>
+        <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+    </div>
+  </div>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div>
+      <span class="hero-tag">出处追踪 · 元数据 · 版本比对</span>
+      <h1 id="heroTitle">周希妍alice零遮罩原图</h1>
+      <p class="sub">一张流传图是否保留原始拍摄信息，往往决定它能否被追溯。这里按 <b>账号发布记录、文件元数据、分辨率与压缩痕迹</b> 三条线拆解比对方法，给出可自行复核的步骤与样本清单。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/#guide">开始核验流程</a>
+        <a class="btn btn-ghost" href="/#deep">阅读深度解析</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>37</b>已标注样本</div>
+        <div><b>12</b>发布账号</div>
+        <div><b>6</b>维度比对表</div>
+        <div><b>11.06</b>最近一次复核</div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 320" role="img" aria-label="图像核验示意图">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#356057"/>
+            <stop offset="1" stop-color="#24403a"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="28" width="250" height="188" rx="14" fill="url(#g1)"/>
+        <rect x="38" y="46" width="214" height="118" rx="8" fill="#f7f4ec" opacity=".92"/>
+        <circle cx="96" cy="92" r="22" fill="#c9743d" opacity=".85"/>
+        <path d="M56 152l38-34 30 26 26-22 34 30" fill="none" stroke="#24403a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="38" y="176" width="120" height="8" rx="4" fill="#cfe0da" opacity=".8"/>
+        <rect x="38" y="190" width="80" height="8" rx="4" fill="#cfe0da" opacity=".55"/>
+        <g transform="translate(232,150)">
+          <rect x="0" y="0" width="164" height="140" rx="12" fill="#fffdf7" stroke="#d9d2c1"/>
+          <rect x="16" y="18" width="60" height="8" rx="4" fill="#24403a" opacity=".7"/>
+          <rect x="16" y="36" width="110" height="6" rx="3" fill="#41544d" opacity=".35"/>
+          <rect x="16" y="50" width="90" height="6" rx="3" fill="#41544d" opacity=".35"/>
+          <rect x="16" y="72" width="132" height="1" fill="#d9d2c1"/>
+          <rect x="16" y="84" width="46" height="6" rx="3" fill="#c9743d" opacity=".7"/>
+          <rect x="16" y="98" width="70" height="6" rx="3" fill="#41544d" opacity=".35"/>
+          <rect x="16" y="112" width="58" height="6" rx="3" fill="#41544d" opacity=".35"/>
+        </g>
+        <circle cx="356" cy="60" r="30" fill="none" stroke="#c9743d" stroke-width="4" opacity=".7"/>
+        <path d="M340 60l12 12 20-24" fill="none" stroke="#c9743d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<main>
+<div class="wrap">
+
+  <!-- 领域概览 -->
+  <section class="sec" id="overview" aria-labelledby="ovTitle">
+    <div class="sec-head">
+      <h2 id="ovTitle">领域概览：原图核验包含哪些工作</h2>
+      <p>围绕一张流传图片，需要同时回答四个问题，缺一项结论就不完整。</p>
+    </div>
+    <div class="overview-grid">
+      <div class="ov-card">
+        <span class="num">01</span>
+        <h3>发布源头比对</h3>
+        <p>账号首发时间、平台水印位置、二次上传顺序，决定谁是第一手。</p>
+      </div>
+      <div class="ov-card">
+        <span class="num">02</span>
+        <h3>EXIF 元数据读取</h3>
+        <p>拍摄设备、光圈、GPS 与时间戳，能验证是否为相机直出。</p>
+      </div>
+      <div class="ov-card">
+        <span class="num">03</span>
+        <h3>压缩与拼接痕迹</h3>
+        <p>局部噪点突变、边缘重采样、JPEG 块效应，是二次编辑的常见信号。</p>
+      </div>
+      <div class="ov-card">
+        <span class="num">04</span>
+        <h3>分辨率与尺寸链</h3>
+        <p>原图尺寸通常为整数倍裁切，非整数比多次缩放说明经过中间处理。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 精选内容推荐 -->
+  <section class="sec" id="featured" aria-labelledby="ftTitle">
+    <div class="sec-head">
+      <h2 id="ftTitle">精选内容推荐</h2>
+      <p>挑出三份可复用的比对样本，均标注日期与平台，便于自行核对。</p>
+    </div>
+    <div class="featured">
+      <article class="feat-main">
+        <img src="https://picsum.photos/seed/alice-verify-01/760/380" width="760" height="380" loading="lazy" alt="EXIF 信息面板截图示意，包含拍摄设备与时间戳字段" style="object-fit:cover">
+        <div class="feat-body">
+          <span class="kicker">样本 A</span>
+          <h3>微博 2026-10-14 首发版本的 EXIF 字段完整度</h3>
+          <p>该版本保留 Make、Model、DateTimeOriginal 三项，但 GPS 字段为空。对比同账号 10 月 9 日另一组照片，GPS 均已剥离，说明账号方存在统一的脱敏处理习惯。</p>
+        </div>
+      </article>
+      <div class="feat-side">
+        <article class="feat-mini">
+          <time datetime="2026-11-04">11 月 4 日</time>
+          <h3>小红书二次上传的尺寸链断裂</h3>
+          <p>原 4032×3024 经平台压缩为 1080×810，比例一致，但重编码剥离全部 EXIF。</p>
+        </article>
+        <article class="feat-mini">
+          <time datetime="2026-10-28">10 月 28 日</time>
+          <h3>Telegram 频道的无损转发记录</h3>
+          <p>该频道以文档形式转发，保留原始字节，可作跨平台比对基准。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新更新 -->
+  <section class="sec" id="update-timeline" aria-labelledby="upTitle">
+    <div class="sec-head">
+      <h2 id="upTitle">最新更新</h2>
+      <p>按日期倒序列出近期复核动作，每条对应一个可核对文件或账号。</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <time datetime="2026-11-06">2026-11-06</time>
+        <h3>新增 3 组元数据比对样本</h3>
+        <p>样本来自 Twitter/X 账号 @alice_daily_cn 的 10 月 21 日贴文，EXIF 中的 DateTimeOriginal 为 09:42，平台展示时间为 16:42，时区差 7 小时，已标记待复核。</p>
+      </div>
+      <div class="tl-item">
+        <time datetime="2026-11-03">2026-11-03</time>
+        <h3>核对豆瓣相册的 9 张缩略图</h3>
+        <p>缩略图统一为 640 长边，与原图尺寸比非整数，属于平台统一裁切，不作为篡改依据。</p>
+      </div>
+      <div class="tl-item">
+        <time datetime="2026-10-30">2026-10-30</time>
+        <h3>整理贴吧讨论帖中的三种说法</h3>
+        <p>分别标注为「事实」「回应」「推测」，其中「原图已被删除」一条无原始链接佐证，归入推测层。</p>
+      </div>
+      <div class="tl-item">
+        <time datetime="2026-10-24">2026-10-24</time>
+        <h3>建立分辨率对照表初版</h3>
+        <p>收录 6 个常见流传尺寸：4032×3024、2048×1536、1080×810、960×720、800×600、500×375。</p>
+      </div>
+      <div class="tl-item">
+        <time datetime="2026-10-14">2026-10-14</time>
+        <h3>锁定微博首发账号与时间</h3>
+        <p>发布时间 2026-10-14 20:07，账号 @alice_cn_official，贴文保留完整转发链，共 214 次转发。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类入口 -->
+  <section class="sec" id="channels" aria-labelledby="chTitle">
+    <div class="sec-head">
+      <h2 id="chTitle">分类入口</h2>
+      <p>按核验动作分组，点击可跳到对应板块。括号内为当前收录条目数。</p>
+    </div>
+    <nav class="tag-index" aria-label="分类入口">
+      <a href="/#overview"><b>原图出处追踪</b><span class="cnt">(14)</span></a>
+      <a href="/#deep"><b>EXIF 元数据解读</b><span class="cnt">(9)</span></a>
+      <a href="/#deep"><b>拼接与重压缩识别</b><span class="cnt">(11)</span></a>
+      <a href="/#featured"><b>首发账号比对</b><span class="cnt">(7)</span></a>
+      <a href="/#update-timeline"><b>分辨率尺寸链</b><span class="cnt">(6)</span></a>
+      <a href="/#guide"><b>平台水印差异</b><span class="cnt">(8)</span></a>
+      <a href="/#faq"><b>时区时间戳校正</b><span class="cnt">(5)</span></a>
+      <a href="/#comments"><b>读者实测反馈</b><span class="cnt">(12)</span></a>
+      <a href="/#reco"><b>无损转发渠道</b><span class="cnt">(4)</span></a>
+      <a href="/#tiers"><b>可信度分层样本</b><span class="cnt">(3)</span></a>
+      <a href="/#checklist"><b>自检清单</b><span class="cnt">(10)</span></a>
+      <a href="/#overview"><b>常见误判案例</b><span class="cnt">(9)</span></a>
+    </nav>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="sec" id="deep" aria-labelledby="dpTitle">
+    <div class="sec-head">
+      <h2 id="dpTitle">深度解析：保留 EXIF 不等于原图</h2>
+      <p>全页唯一主体阅读区，给出可被反驳的判断，并附核对入口。</p>
+    </div>
+    <div class="deep">
+      <div class="deep-main">
+        <p class="lead">在 2026 年 10 月的流传样本里，被冠以「零遮罩原图」的文件共有 8 个版本。用同一套工具读元数据，只有 3 个保留完整相机字段，其余 5 个的 EXIF 被整体清除。问题在于：保留字段的 3 个版本彼此并不一致。</p>
+
+        <h3>判断一：字段完整 ≠ 内容未经处理</h3>
+        <p>版本 V2 与 V5 都带 Make: Sony、Model: ILCE-7M3，但 V2 的 DateTimeOriginal 为 2026-10-13 23:18:04，V5 为 2026-10-14 09:52:11，相差约 10 小时 34 分。更关键的是 V5 的 Software 字段写入「Adobe Photoshop 25.9」，这直接说明它经历过编辑软件保存。元数据完整只证明相机参与了拍摄，不证明画面未被改动。</p>
+        <p>可核对的方式：用 exiftool 读取两组文件，执行 <code>exiftool -Make -Model -DateTimeOriginal -Software V2.jpg V5.jpg</code>，比对输出。这一条判断可被反驳——若有人找到 V5 的未编辑前身，且 Software 字段为空，则上述推论需修正。</p>
+
+        <h3>判断二：时间戳差异更可能来自时区，而非伪造</h3>
+        <p>2026-11-06 复核的 3 组样本里，平台展示时间与 EXIF 时间统一相差 7 或 8 小时，与 UTC+8 和 UTC+1 的时差吻合，且集中在同一批上传。把所有时间差都当成伪造证据，会误伤大量正常跨国发布的内容。</p>
+        <p>校对结构如下：先看平台是否显示时区，再看同一账号其他贴文是否保持一致的偏移量，最后才判断个别异常。单点异常不足以支撑「原图被替换」的结论。</p>
+
+        <h3>判断三：分辨率整数倍关系是强信号</h3>
+        <p>4032×3024 到 2016×1512 是精确的 2 倍关系，属于常规降采样，不构成篡改证据。流传样本中出现的 1080×813，高度多出 3 像素，与原比例 4:3 不符，属于裁切后重编码。这类非整数比在 8 个版本里有 2 个。</p>
+
+        <h3>判断四：转发链能定位首发，但不能证明原件</h3>
+        <p>微博 @alice_cn_official 在 2026-10-14 20:07 的贴文处，转发链共 214 次，最早一条转发时间戳为 20:11。这能确定传播起点在微博，但无法排除账号方在发布前已对图片做过处理。首发 ≠ 原始，两者要分开陈述。</p>
+
+        <div class="claim">
+          <b>可被引用的结论：</b>在现有 8 个样本中，只有 Telegram 频道的文档转发件保留了完整字节与 EXIF，可作为比对基准；其余 7 个版本均存在至少一项处理痕迹。任何声称「这就是原生原图」的说法，需要同时给出字节完整性证据与拍摄设备记录，缺一不可。
+        </div>
+        <p>反驳路径也明确：若有人能提供与 Telegram 文档转发件字节完全一致、且带完整 GPS 与时间戳的版本，上述结论的第 2 部分就需修订。这属于可证伪结构，而非定论。</p>
+      </div>
+      <aside class="deep-aside">
+        <div class="aside-card">
+          <h4>核对表：六个维度</h4>
+          <table class="fact-table">
+            <tr><th>EXIF 完整度</th><td>3/8 保留相机字段</td></tr>
+            <tr><th>Software 字段</th><td>2 份写入 PS 版本号</td></tr>
+            <tr><th>GPS 保留</th><td>0/8 保留坐标</td></tr>
+            <tr><th>分辨率整数比</th><td>6/8 符合</td></tr>
+            <tr><th>字节完全一致</th><td>1 份（TG 文档）</td></tr>
+            <tr><th>时区偏移一致</th><td>3 组样本差 7–8 小时</td></tr>
+          </table>
+        </div>
+        <div class="aside-card">
+          <h4>用到的工具与版本</h4>
+          <ul>
+            <li>exiftool 12.76，读取全部标签</li>
+            <li>JPEGsnoop 1.8.0，检测压缩表</li>
+            <li>Forensically 网页版，噪点分析</li>
+            <li>sha256sum，比对文件字节</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 体验指南 -->
+  <section class="sec" id="guide" aria-labelledby="gdTitle">
+    <div class="sec-head">
+      <h2 id="gdTitle">体验指南：六步完成一次自检</h2>
+      <p>不需要专业取证设备，一台笔记本加免费工具即可完成前四步。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>保存原始文件而非截图</h3>
+        <p>右键另存为，确认扩展名为 .jpg 或 .heic。截图会丢失全部 EXIF，后续步骤无法进行。</p>
+      </div>
+      <div class="step">
+        <h3>计算 SHA-256 指纹</h3>
+        <p>Windows 用 certutil -hashfile 文件名 SHA256，macOS 用 shasum -a 256。记录结果后与转发件比对。</p>
+      </div>
+      <div class="step">
+        <h3>读取 EXIF 并导出文本</h3>
+        <p>macOS 预览「显示检查器」可看基础字段；完整字段需 exiftool。重点看 Make、Model、DateTimeOriginal、Software 四项。</p>
+      </div>
+      <div class="step">
+        <h3>检查压缩表与量化表</h3>
+        <p>JPEGsnoop 会输出量化表来源。若显示 Photoshop 或某手机品牌，可据此判断经过哪类软件转码。</p>
+      </div>
+      <div class="step">
+        <h3>比对尺寸链与原比例</h3>
+        <p>用图片属性读取宽高，计算长宽比。常见相机比例 4:3、3:2。非整数倍缩放说明中间有裁切。</p>
+      </div>
+      <div class="step">
+        <h3>回溯发布账号与时间</h3>
+        <p>在平台搜索账号名，按时间排序，记录首发贴文链接与时间。转发链比截图时间更可靠。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq" aria-labelledby="fqTitle">
+    <div class="sec-head">
+      <h2 id="fqTitle">常见问题</h2>
+      <p>答案直接针对图像文件本身，不涉及立场判断。</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>图片被平台压缩后，EXIF 还能找回吗？</summary>
+        <p>不能。平台重编码时会剥离原始元数据块，压缩过程不可逆。唯一可行方式是从原始上传者处获取未压缩文件，或找到未经历重编码的无损转发件，例如 Telegram 的文档模式转发。</p>
+      </details>
+      <details>
+        <summary>EXIF 里的拍摄时间与平台显示时间不一致，是不是造假？</summary>
+        <p>多数情况是时区差异。相机写入本地时间，平台统一按服务器时区展示。先确认两者时差是否为整小时，再看同一账号其他贴文是否保持相同偏移量。单次差异不足以判定造假。</p>
+      </details>
+      <details>
+        <summary>分辨率带小数比例就一定经过裁切吗？</summary>
+        <p>不绝对。部分手机的多帧合成会输出非标准比例，但会在 EXIF 的 Software 字段留下品牌算法名称。若 Software 为空且比例异常，裁切的可能性显著上升，需要结合量化表进一步判断。</p>
+      </details>
+      <details>
+        <summary>如何判断一张图是否被拼接？</summary>
+        <p>看压缩块边界。JPEG 以 8×8 像素为单位编码，拼接区域的块效应方向或强度会与周边不同。用 Forensically 的误差级别分析，异常高亮区域若沿直线分布，多为拼接痕迹。</p>
+      </details>
+      <details>
+        <summary>账号首发时间能作为原图证明吗？</summary>
+        <p>只能证明传播起点。发布者可能在发布前已完成编辑或压缩，首发时间戳记录的是上传动作，不是拍摄动作。要证明原图，需要拍摄设备记录与文件字节同时吻合。</p>
+      </details>
+      <details>
+        <summary>没有 EXIF 的图片还有核验价值吗？</summary>
+        <p>有。压缩表、尺寸链、噪点分布、平台水印位置都不依赖 EXIF。多个版本交叉比对时，无 EXIF 版本反而能提供尺寸与压缩差异信息，用于排除某些传播路径。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 用户评论 -->
+  <section class="sec" id="comments" aria-labelledby="cmTitle">
+    <div class="sec-head">
+      <h2 id="cmTitle">读者评论</h2>
+      <p>来自读者实测反馈，保留原始语气，含中性意见与质疑。</p>
+    </div>
+    <div class="comments">
+      <div class="comment is-ok">
+        <p>按指南第二步算了 SHA-256，微博存下来的文件和 Telegram 文档件果然不一样，哈希前六位就分叉了。这个方法比看水印靠谱。</p>
+        <div class="who"><b>@像素巡检员</b><time datetime="2026-11-05">11-05</time></div>
+      </div>
+      <div class="comment is-neu">
+        <p>时区那段说得通，但我手上那份 1080×813 的图，Software 字段写的是「Meitu 10.2」，也可能只是修图软件导出，不一定是裁切。</p>
+        <div class="who"><b>@阿岚</b><time datetime="2026-11-04">11-04</time></div>
+      </div>
+      <div class="comment is-bad">
+        <p>第六步回溯账号太理想化了。贴吧和豆瓣的搜索按时间排序经常失效，翻了 40 分钟也没找到 10 月 14 日那条原贴，最后还是靠 Wayback 才定位到。</p>
+        <div class="who"><b>@老K翻旧账</b><time datetime="2026-11-02">11-02</time></div>
+      </div>
+      <div class="comment is-ok">
+        <p>JPEGsnoop 那段挺实用。我那版量化表来源显示 Apple Camera，说明是 iPhone 直出后没经过第三方软件，跟 V5 的 PS 版本明显不同。</p>
+        <div class="who"><b>@快门声</b><time datetime="2026-11-01">11-01</time></div>
+      </div>
+      <div class="comment is-neu">
+        <p>判断三讲整数倍关系，可 2016×1512 和 4032×3024 确实是 2 倍，这点没问题。但 960×720 也是 4 倍关系，为什么把 960 归进疑似样本？表中没写清楚。</p>
+        <div class="who"><b>@尺寸控</b><time datetime="2026-10-30">10-30</time></div>
+      </div>
+      <div class="comment is-bad">
+        <p>整篇看完，最有用的其实是「首发 ≠ 原始」这半句。之前一直以为找到第一个发的人就完事了，结果同账号 10 月 9 日那组照片也把 GPS 抹了，说明账号方本来就在脱敏。</p>
+        <div class="who"><b>@午后三点</b><time datetime="2026-10-29">10-29</time></div>
+      </div>
+      <div class="comment is-ok">
+        <p>指南第五步帮我省了事。算完长宽比 4:3，确认 4032×3024 是原比例，排除了被裁切的可能性，剩下就是压缩表的问题了。</p>
+        <div class="who"><b>@像素巡检员</b><time datetime="2026-10-27">10-27</time></div>
+      </div>
+      <div class="comment is-neu">
+        <p>FAQ 里拼接检测讲 8×8 块效应，实际用 Forensically 的时候高亮区域经常一大片，分不出直线边界，得配合放大 400% 手动看。工具只是辅助。</p>
+        <div class="who"><b>@取证菜鸟</b><time datetime="2026-10-26">10-26</time></div>
+      </div>
+      <div class="comment is-bad">
+        <p>「时区差 7 到 8 小时」这个结论，11 月 6 日那 3 组样本里其实只有 2 组是 7 小时，第 3 组差了 9 小时。表里写太粗了，希望下次把每组的差值都列出来。</p>
+        <div class="who"><b>@差一小时</b><time datetime="2026-11-06">11-06</time></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关资讯 -->
+  <section class="sec" id="news" aria-labelledby="nwTitle">
+    <div class="sec-head">
+      <h2 id="nwTitle">相关资讯</h2>
+      <p>按日期列出与核验相关的平台动态与工具版本变化。</p>
+    </div>
+    <ul class="news-list">
+      <li><time datetime="2026-11-06">11-06</time><a href="/#deep">exiftool 12.76 更新对 HEIC 内嵌缩略图的标签支持</a><span>工具</span></li>
+      <li><time datetime="2026-11-03">11-03</time><a href="/#update-timeline">豆瓣相册缩略图尺寸统一为 640 长边</a><span>平台</span></li>
+      <li><time datetime="2026-10-31">10-31</time><a href="/#comments">Telegram 文档转发保留原始字节的实验复现</a><span>实测</span></li>
+      <li><time datetime="2026-10-28">10-28</time><a href="/#featured">Twitter/X 图片上传重编码参数变动</a><span>平台</span></li>
+      <li><time datetime="2026-10-22">10-22</time><a href="/#deep">JPEGsnoop 量化表来源库新增三个手机品牌</a><span>工具</span></li>
+      <li><time datetime="2026-10-16">10-16</time><a href="/#guide">Wayback Machine 抓取微博贴文的成功率回升</a><span>工具</span></li>
+    </ul>
+  </section>
+
+  <!-- 相关推荐 -->
+  <section class="sec" id="reco" aria-labelledby="rcTitle">
+    <div class="sec-head">
+      <h2 id="rcTitle">相关推荐</h2>
+      <p>两个对照面板：一边是工具与方法，一边是条目与标签。</p>
+    </div>
+    <div class="reco-grid">
+      <div class="reco-panel">
+        <h3>工具与方法对照</h3>
+        <div class="reco-tags">
+          <a href="/#guide">exiftool 命令行读取 EXIF</a>
+          <a href="/#deep">JPEGsnoop 量化表来源识别</a>
+          <a href="/#deep">Forensically 噪点分析</a>
+          <a href="/#guide">SHA-256 文件指纹比对</a>
+          <a href="/#faq">时区偏移校正方法</a>
+          <a href="/#deep">分辨率整数倍判断法</a>
+        </div>
+      </div>
+      <div class="reco-panel">
+        <h3>条目与标签索引</h3>
+        <div class="reco-tags">
+          <a href="/#featured">微博首发账号 @alice_cn_official</a>
+          <a href="/#update-timeline">2026-10-14 20:07 贴文</a>
+          <a href="/#featured">Telegram 文档转发件</a>
+          <a href="/#comments">1080×813 疑似样本</a>
+          <a href="/#faq">V5 的 PS 25.9 字段</a>
+          <a href="/#tiers">可信度分层样本</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 补充：可信度分层 -->
+  <section class="sec" id="tiers" aria-labelledby="trTitle">
+    <div class="sec-head">
+      <h2 id="trTitle">可信度分层</h2>
+      <p>按证据强度把现有版本分为三层，分层依据是可复核的字段，不是主观印象。</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <span class="level">第一层 · 强证据</span>
+        <h3>可作基准</h3>
+        <ol>
+          <li>Telegram 文档转发件，字节完整，EXIF 全保留</li>
+          <li>与首发贴文 SHA-256 一致的文件副本</li>
+          <li>带 Software 字段且版本号可查的相机直出件</li>
+        </ol>
+      </div>
+      <div class="tier">
+        <span class="level">第二层 · 中等证据</span>
+        <h3>可作参考</h3>
+        <ol>
+          <li>尺寸链符合整数倍关系、EXIF 部分保留</li>
+          <li>平台展示时间与 EXIF 时间差为整小时</li>
+          <li>量化表来源与账号常用设备一致</li>
+        </ol>
+      </div>
+      <div class="tier">
+        <span class="level">第三层 · 弱证据</span>
+        <h3>仅供比对</h3>
+        <ol>
+          <li>EXIF 全清除且分辨率非整数比</li>
+          <li>Software 字段显示修图软件版本</li>
+          <li>仅有截图或二次转发链的版本</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 补充：自检清单 -->
+  <section class="sec" id="checklist" aria-labelledby="clTitle">
+    <div class="sec-head">
+      <h2 id="clTitle">自检清单</h2>
+      <p>十项检查，逐条打勾后基本能判断手头文件属于哪一层可信度。</p>
+    </div>
+    <ul class="checklist">
+      <li>文件扩展名与真实格式一致</li>
+      <li>SHA-256 已计算并与来源比对</li>
+      <li>Make、Model 字段非空</li>
+      <li>Software 字段无修图软件版本号</li>
+      <li>DateTimeOriginal 与平台时间差为整小时</li>
+      <li>GPS 字段状态已记录</li>
+      <li>长宽比为 4:3 或 3:2 整数比例</li>
+      <li>量化表来源与账号常用设备一致</li>
+      <li>噪点分布无直线状突变</li>
+      <li>转发链可回溯到 2026-10-14 首发贴文</li>
+    </ul>
+  </section>
+
+</div>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer" id="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand">周希妍alice零遮罩原图</div>
+        <p class="f-desc">提供可复现的图像出处核验方法与样本索引。所有结论附核对入口，欢迎带着反例来修正。</p>
+      </div>
+      <div>
+        <h4>核验方法</h4>
+        <ul>
+          <li><a href="/#guide">六步自检流程</a></li>
+          <li><a href="/#deep">EXIF 字段解读</a></li>
+          <li><a href="/#deep">压缩与拼接识别</a></li>
+          <li><a href="/#checklist">十项检查清单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>样本与条目</h4>
+        <ul>
+          <li><a href="/#featured">精选比对样本</a></li>
+          <li><a href="/#update-timeline">更新时间线</a></li>
+          <li><a href="/#tiers">可信度分层</a></li>
+          <li><a href="/#reco">标签索引</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>互动</h4>
+        <ul>
+          <li><a href="/#comments">读者评论</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-note">
+      <span>样本条目与账号信息均为演示数据，用于展示核验方法，不代表真实人物事件。最后更新 2026-11-08，对应正文「新增 3 组元数据比对样本」与「时区差值复核」两项。</span>
+      <span>© 2026 图像核验手册</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 移动端菜单 */
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  if(menuBtn && nav){
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? '收起' : '菜单';
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.innerWidth <= 760){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.textContent = '菜单';
+      }
+    });
+  }
+
+  /* 滚动高亮 */
+  var navLinks = Array.prototype.slice.call(nav ? nav.querySelectorAll('a') : []);
+  var sections = navLinks.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  });
+  function highlight(){
+    var pos = window.scrollY + 140;
+    var idx = -1;
+    sections.forEach(function(sec, i){
+      if(sec && sec.offsetTop <= pos) idx = i;
+    });
+    navLinks.forEach(function(a, i){
+      a.classList.toggle('active', i === idx);
+    });
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  window.addEventListener('resize', highlight);
+  highlight();
+
+  /* 回到顶部 */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 420){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 本地搜索 */
+  var input = document.getElementById('siteSearch');
+  var feedback = document.getElementById('searchFeedback');
+  var index = [];
+  document.querySelectorAll('h2, h3, .tag-index a, .reco-tags a, .news-list a, .faq summary').forEach(function(el){
+    var text = el.textContent.replace(/\s+/g,' ').trim();
+    if(text.length < 2) return;
+    var target = el.closest('section');
+    index.push({text:text, id: target ? target.id : ''});
+  });
+  function escapeReg(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function doSearch(){
+    var q = input.value.trim();
+    if(!q){ feedback.classList.remove('show'); feedback.innerHTML=''; return; }
+    var matched = index.filter(function(item){ return item.text.indexOf(q) !== -1; }).slice(0,5);
+    if(matched.length === 0){
+      feedback.innerHTML = '没有找到与 <strong>' + q.replace(/[<>&]/g,'') + '</strong> 匹配的条目。试试「EXIF」「时区」「分辨率」或账号名。';
+    }else{
+      var html = '找到 ' + matched.length + ' 条：<br>';
+      matched.forEach(function(m){
+        html += '<a href="/#' + m.id + '">' + m.text + '</a><br>';
+      });
+      feedback.innerHTML = html;
+    }
+    feedback.classList.add('show');
+  }
+  if(input){
+    input.addEventListener('input', doSearch);
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ input.value=''; feedback.classList.remove('show'); }
+      if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.search')) feedback.classList.remove('show');
+    });
+  }
+
+  /* 平滑滚动（为吸顶预留偏移） */
+  document.querySelectorAll('a[href^="/#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').replace('/#','');
+      var target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      var offset = 52 + 64 + 14;
+      var y = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top: y < 0 ? 0 : y, behavior:'smooth'});
+      history.replaceState(null,'','#'+id);
+    });
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"周希妍alice零遮罩原图",
+  "description":"图像出处核验与元数据比对方法手册，提供 EXIF 解读、压缩痕迹识别、分辨率尺寸链与可信度分层。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"图片被平台压缩后，EXIF 还能找回吗？","acceptedAnswer":{"@type":"Answer","text":"不能。平台重编码时会剥离原始元数据块，压缩过程不可逆。只能从原始上传者处获取未压缩文件，或找到未经历重编码的无损转发件。"}},
+    {"@type":"Question","name":"EXIF 里的拍摄时间与平台显示时间不一致，是不是造假？","acceptedAnswer":{"@type":"Answer","text":"多数情况是时区差异。相机写入本地时间，平台统一按服务器时区展示。先确认两者时差是否为整小时，再看同一账号其他贴文是否保持相同偏移量。"}},
+    {"@type":"Question","name":"分辨率带小数比例就一定经过裁切吗？","acceptedAnswer":{"@type":"Answer","text":"不绝对。部分手机多帧合成会输出非标准比例，但会在 EXIF 的 Software 字段留下品牌算法名称。若 Software 为空且比例异常，裁切可能性显著上升。"}},
+    {"@type":"Question","name":"如何判断一张图是否被拼接？","acceptedAnswer":{"@type":"Answer","text":"看压缩块边界。JPEG 以 8×8 像素为单位编码，拼接区域的块效应方向或强度会与周边不同。用 Forensically 的误差级别分析，异常高亮区域若沿直线分布，多为拼接痕迹。"}},
+    {"@type":"Question","name":"账号首发时间能作为原图证明吗？","acceptedAnswer":{"@type":"Answer","text":"只能证明传播起点。发布者可能在发布前已完成编辑或压缩，首发时间戳记录的是上传动作，不是拍摄动作。"}},
+    {"@type":"Question","name":"没有 EXIF 的图片还有核验价值吗？","acceptedAnswer":{"@type":"Answer","text":"有。压缩表、尺寸链、噪点分布、平台水印位置都不依赖 EXIF。多个版本交叉比对时，无 EXIF 版本能提供尺寸与压缩差异信息。"}}
+  ]
+}
+</script>
+</body>
+                </html>
